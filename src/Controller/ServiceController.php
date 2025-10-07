@@ -15,4 +15,19 @@ final class ServiceController extends AbstractController
             'controller_name' => 'ServiceController',
         ]);
     }
+
+    #[Route('/service/{name}', name: 'show_service')]
+    public function showService($name): Response
+    {
+        return $this->render('service/showService.html.twig', [
+            'name' => $name,
+        ]);
+    }
+
+    #[Route('/goToIndex', name: 'go_to_index')]
+    public function goToIndex(): Response
+    {
+        // redirection vers la méthode index() du HomeController
+        return $this->redirectToRoute('app_home');
+    }
 }
